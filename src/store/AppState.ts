@@ -1,4 +1,6 @@
 import { combineReducers } from "redux";
-
-export const rootReducer = combineReducers({});
+import { PeopleReducer } from "./PeopleReducer";
+export const rootReducer = combineReducers({
+  people: PeopleReducer,
+});
 export type AppState = ReturnType<typeof rootReducer>;

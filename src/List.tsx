@@ -1,26 +1,24 @@
-import React from 'react'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "./store/AppState";
 
-type Props ={
-    data: {
-        id: number;
-        name: string;
-        age: number;
-        image: string;
-    }[]
-}
-function List({data}:Props) {
+function List() {
+  const people = useSelector((state: AppState) => state.people);
   return (
-    <>{data.map((item)=> {
-       return <article key={item.id} className='person'>
-        <img src={item.image} alt={item.name}/>
-        <div>
-            <h4>{item.name}</h4>
-            <p>{item.age} years</p>
-        </div>
-       </article>
-        
-    })}</>
-  )
+    <>
+      {people?.map((item) => {
+        return (
+          <article key={item.id} className="person">
+            <img src={item.image} alt={item.name} />
+            <div>
+              <h3>{item.name}</h3>
+              <p>{item.age}</p>
+            </div>
+          </article>
+        );
+      })}
+    </>
+  );
 }
 
-export default List
+export default List;
